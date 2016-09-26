@@ -1,5 +1,9 @@
 table,th,td{
     border:1px solid pink;
-    background-color: #AAAAAA }
+    background-color: #AAAAAA 
+    }
 
+table.mytable{
+width:100%
+}
     
