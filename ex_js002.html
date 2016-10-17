@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-	<title>Bootstrap 練習</title>
+	<title>Yeh-Meng's Practice 10.17</title>
 
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">-->
 	<link rel="stylesheet" href="./css/bootstrap.css">
-	<link rel="stylesheet" href="./css/ex_bootstrap.css">
+	<link rel="stylesheet" href="./css/ex_js001.css">
 </head>
 
-<nav class="navbar navbar-fixed-top navbar-dark bg-primary" style="background-color: #D3f2fd;">
+<nav class="navbar navbar-dark bg-inverse">
 	<a class="navbar-brand" href="#">导航栏</a>
 	<nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
 		<a class="navbar-brand" href="#">Fixed bottom</a>
@@ -38,8 +39,8 @@
     更多
   </button>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="#">吃饭</a>
-				<a class="dropdown-item" href="#">睡觉</a>
+				<a class="dropdown-item" href="./ex_js001.html">吃饭</a>
+				<a class="dropdown-item active" href="./ex_js002.html">睡觉</a>
 				<a class="dropdown-item" href="#">打豆豆</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#">Separated link</a>
@@ -61,13 +62,13 @@
 				</ol>
 				<div class="carousel-inner" role="listbox">
 					<div class="carousel-item active">
-						<img src="https://unsplash.it/1110/300/?blur&random&1" alt="First slide">
+						<img src="https://unsplash.it/1110/300/?blur&random&4" alt="First slide">
 					</div>
 					<div class="carousel-item">
-						<img src="https://unsplash.it/1110/300/?blur&random&2" alt="Second slide">
+						<img src="https://unsplash.it/1110/300/?blur&random&5" alt="Second slide">
 					</div>
 					<div class="carousel-item">
-						<img src="https://unsplash.it/1110/300/?blur&random&3" alt="Third slide">
+						<img src="https://unsplash.it/1110/300/?blur&random&6" alt="Third slide">
 					</div>
 				</div>
 				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -86,52 +87,25 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<!--文章開始-->
-				<div class="main">
-					<div class="row">
-						<div class="col-md-12">
-							<h1 class="title">種水然在加家醫話品要等片</h1>
-						</div>
-					</div>
-					<div class="row row_item">
-						<div class="col-md-8">
-							<p>不何文大所了原望有三營反市性先馬不此越子大一成無了再得生多已不非，術飯公考？無一名，當星本命作市二十著年斷孩古曾是是，大他出一易的選這如哥？識動車車媽館：投子朋得時車心裡然生……故天小道當相個才面，石的香下可試金黑到去前女來轉推。
-							</p>
-						</div>
-						<div class="col-md-4">
-							<div class="text-md-center">
-								<img class="img-thumbnail" src="https://unsplash.it/200/150/?random&4">
-							</div>
-						</div>
-					</div>
-
-					<div class="row row_item">
-						<div class="col-md-4">
-							<div class="text-md-center">
-								<img class="img-thumbnail" src="https://unsplash.it/200/150/?random&5">
-							</div>
-						</div>
-						<div class="col-md-8">
-							<p>在化況去人時們更約二部……政下前次我在，黨下我條兒投下古相大國年得色演車能平世。的上我場政笑。字題得物後，字十育：一基單出的結生禮已定衣我我後考的上今史長辦太個料、生青保直不因最角無此約完的背立第了賣，此市聽，的問隨了最。大紅入步縣說日轉持持方大的人養線康。</p>
-						</div>
-					</div>
-
+				<div class="panel">
+					<input id="input" class="form-control" type="text">
+					<button id="test" onclick="sayHello();" type="botton" class="btn btn-primary">測試</button>
+					<div id="output"></div>
 				</div>
-				<!--文章結束-->
 			</div>
 			<div class="col-md-4">
-				<div class="sidebar-module">
-					<h4>About Me</h4>
-					<div class="text-md-center">
-						<img src="https://unsplash.it/200/?random&6">
-					</div>
-					<p>
-						Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum
-						nulla sed consectetur.
-					</p>
+				<div class="list-group">
+					<a href="#" class="list-group-item active">百度</a>
+					<a href="#" class="list-group-item">谷歌</a>
+					<a href="#" class="list-group-item">腾讯</a>
+					<a href="#" class="list-group-item">搜狐</a>
+					<a href="#" class="list-group-item">网易</a>
+					<a href="#" class="list-group-item">新浪</a>
+					<a href="#" class="list-group-item">搜狗</a>
+					<a href="#" class="list-group-item">酷狗</a>
+					<a href="#" class="list-group-item">看门狗</a>
+					<a href="#" class="list-group-item">好多狗</a>
 				</div>
-				</p>
-				<button type="button" class="btn btn-primary">百度</button>
 			</div>
 		</div>
 	</div>
@@ -152,6 +126,7 @@
         crossorigin="anonymous"></script>-->
 
 	<script src="./js/bootstrap.js"></script>
+	<script src="./js/js002.js"></script>
 
 </body>
 
