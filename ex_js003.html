@@ -34,16 +34,15 @@
 			</li>
 		</ul>
 
-
 		<form class="form-inline pull-xs-right">
 			<div class="btn-group">
 				<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     更多
   </button>
 				<div class="dropdown-menu">
-					<a class="dropdown-item active" href="./ex_js001.html">吃饭-Hello</a>
+					<a class="dropdown-item" href="./ex_js001.html">吃饭-Hello</a>
 					<a class="dropdown-item" href="./ex_js002.html">睡觉-Input</a>
-					<a class="dropdown-item" href="./ex_js003.html">打豆豆-BMI</a>
+					<a class="dropdown-item active" href="./ex_js003.html">打豆豆-BMI</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Separated link</a>
 				</div>
@@ -89,47 +88,51 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<div class="panel">
-					<input id="input" class="form-control" type="text">
-					<button id="test" onclick="sayHello();" type="botton" class="btn btn-primary">測試</button>
-					<div id="output"></div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="list-group">
-					<a href="#" class="list-group-item">百度</a>
-					<a href="#" class="list-group-item">谷歌</a>
-					<a href="#" class="list-group-item">腾讯</a>
-					<a href="#" class="list-group-item">搜狐</a>
-					<a href="#" class="list-group-item">网易</a>
-					<a href="#" class="list-group-item">新浪</a>
-					<a href="#" class="list-group-item">搜狗</a>
-					<a href="#" class="list-group-item">酷狗</a>
-					<a href="#" class="list-group-item">看门狗</a>
-					<a href="#" class="list-group-item">好多狗</a>
+					<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">身高（单位：cm）</label>
+						<div class="col-xs-10">
+							<input class="form-control" type="text" id="height">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">体重（单位：kg）</label>
+						<div class="col-xs-10">
+							<input class="form-control" type="text" id="weight">
+						</div>
+					</div>
+					<div class="form-group row">
+						<button id="test" type="button" class="btn btn-primary">点击测试</button>
+					</div>
+					<!--<input id="input" class="form-control" type="text">-->
+					<div class="form-group row">
+						<label for="example-text-input" class="col-xs-12 col-form-label">BMI身体质量指数(BMI)：正常范围18.5≦BMI＜24、体重过轻：BMI ＜ 18.5、过重：24≦BMI＜27、轻度肥胖：27≦BMI＜30、中度肥胖：30≦BMI＜35、重度肥胖：BMI≧35　 </label>
+
+						<label for="example-text-input" class="col-xs-12 col-form-label">BMI数值：<span id="output" class="output"></span></label>
+
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="footer">
-		<div class="container">
-			&copy; 2016 Yeh.Meng @ MCU
+		<div class="footer">
+			<div class="container">
+				&copy; 2016 Yeh.Meng @ MCU
+			</div>
 		</div>
-	</div>
 
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
-		crossorigin="anonymous"></script>
-	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU"
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"
+			crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
+			crossorigin="anonymous"></script>
+		<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU"
         crossorigin="anonymous"></script>-->
 
-	<script src="./js/bootstrap.js"></script>
-	<script src="./js/js001.js"></script>
+		<script src="./js/bootstrap.js"></script>
+		<script src="./js/js003.js"></script>
 
 </body>
 
