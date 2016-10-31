@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "  http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="  http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<title>jjb</title>
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		#content {
+			width: 800px;
+			height: 500px;
+			position: absolute;
+			left: 10px;
+			top: 10px;
+			background: url(bg.gif) repeat-x left top;
+		}
+		
+		#scbox {
+			width: 100px;
+			background: #000000;
+			font-weight: bold;
+			color: #FFFFFF;
+			font-size: 12px;
+			line-height: 22px;
+			padding-left: 10px;
+		}
+		
+		#start {
+			position: absolute;
+			left: 215px;
+			_left: 190px;
+			top: 140px;
+		}
+		
+		#life {
+			height: 22px;
+			background: #009000;
+			position: absolute;
+			left: 110px;
+			top: 0px;
+		}
+		
+		#bottom {
+			width: 800px;
+			height: 44px;
+			position: absolute;
+			left: 0;
+			top: 456px;
+			background: #333;
+			z-index: 9;
+		}
+		
+		#startbox {
+			height: 150px;
+			position: absolute;
+			left: 260px;
+			top: 100px;
+			background: #000000;
+			color: #fff;
+			font-size: 12px;
+			padding: 10px;
+		}
+		
+		#jia {
+			font-size: 40px;
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+			color: #0099CC;
+			position: absolute;
+			z-index: 1001;
+		}
+		
+		#jian {
+			font-size: 40px;
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+			color: #FF0000;
+			position: absolute;
+			z-index: 1001;
+		}
+	</style> <script language="javascript">  (function (){  (new Image()).src = "38.gif";  (new Image()).src = "48.gif";  (new Image()).src = "bike.gif";  (new Image()).src = "bike2.gif";  (new Image()).src = "bg.gif";  })();  //缓存加载图片  function $(id) {return document.getElementById(id);}  var boxBaseAttr = new Object;  boxBaseAttr = {  width : "26px",  height : "40px",  position: "absolute",  top : "30px",  background : "url(38.gif) no-repeat center top",  zIndex : 10  };  var boxBaseAttr2 = new Object;  boxBaseAttr2 = {  width : "26px",  height : "40px",  position: "absolute",  top : "30px",  background : "url(48.gif) no-repeat center top",  zIndex : 10  };  var ele = new Object;  ele = {  div : document.createElement("div"),  span: function (){  var sp = document.createElement("span");  for(var s in boxBaseAttr) {  sp.style[s] = boxBaseAttr[s];  }  sp.setAttribute("type", "good");  return sp;  },  badspan : function (){  var sp2 = document.createElement("span");  for(var s in boxBaseAttr2) {  sp2.style[s] = boxBaseAttr2[s];  }  sp2.setAttribute("type", "bad");  return sp2;  }  };  var sco = 0, lifeWidth = 690, lifes = true;  var bar = {  getScore : function () {  sco += 10;  $("sc").innerHTML = sco;  },  loseScore : function (){  sco -= 10;  $("sc").innerHTML = sco;  },  life : function (){  var life = $("life");  var sl = setInterval(function(){  if(lifeWidth < 23) {  lifes = false;  clearInterval(sl);  return;  }  else {  lifeWidth -= 23;  life.style.width = lifeWidth + "px";  }  },1000);  }  };  var fire = {  init : function (o, x, y) {  o.style.display = "block";  o.style.left = x + "px";  o.style.top = y + "px";  var fs = setInterval(function(){  if (y >= 280) {  y -= 10;  o.style.top = y + "px";  }  else{  clearInterval(fs);  o.style.display = "none";  }  },10);  }  };  /*-- game begin --*/  function game() {  var content = $("content"), x = 0;  var pigBaseAttr = new Object;  pigBaseAttr = {  background : "url(bike.gif) no-repeat center top",  position : "absolute",  top : content.clientHeight-44+"px",  left : (content.clientWidth - 45)/2+"px",  width : "45px",  height : "44px",  zIndex : 1000  };  var pig = ele.div.cloneNode(true);  for(var s in pigBaseAttr) {  pig.style[s] = pigBaseAttr[s];  }  content.appendChild(pig);  /* -- 小猪移动功能begin--*/  content.onmousemove = function (event){  var e = event || window.event;  if ( x > e.clientX) {  //pig.style.width = "110px";  pig.style.background = "url(bike.gif) no-repeat left top";  if (e.clientX -45 < 0) {  pig.style.left = "0px";  } else if(e.clientX + 45 > 800) {  pig.style.left = "755px";  }  else {  pig.style.left = (e.clientX - 45)+"px";  }  }  else if (x < e.clientX) {  //pig.style.width = "110px";  pig.style.background = "url(bike2.gif) no-repeat right top";  if (e.clientX -45 < 0) {  pig.style.left = "0px";  } else if(e.clientX + 45 > 800) {  pig.style.left = "755px";  }  else {  pig.style.left = (e.clientX - 45)+"px";  }  }  x = e.clientX;  }  /*-- 判断是否撞击，传入参数为box和content --*/  function meet(obox,parent) {  var objX = obox.offsetLeft;  var pigX = pig.offsetLeft;  var boxType = obox.getAttribute("type");  if (objX + 26 >= pigX && objX <= pigX + 45) {  if (boxType == "good") {  bar.getScore();  fire.init($("jia"), pigX, pig.offsetTop-30);  }  else if(boxType == "bad") {  bar.loseScore();  fire.init($("jian"), pigX, pig.offsetTop-30);  }  obox.style.left = "-2000px";  }  }  /* -- 创建随机位置的金币 begin--*/  function createbox() {  var box = ele.span();  var b = 30;  var boxLeft = Math.floor(Math.random()*760);//产生随机距离  box.style.left = boxLeft + "px";  content.appendChild(box);  //box进入游戏界面，开始移动，并开始执行函数和pig比对是否撞击  var st = setInterval(function (){  if (b < 460){  box.style.top = b + 5 + "px";  b += 5;  if (b >= 416) {  meet(box, content);  }  }  else {  content.removeChild(box);  clearInterval(st);  b = 30;  }  },5);  }  function createbadbox() {  var box = ele.badspan();  var b = 30;  var boxLeft = Math.floor(Math.random()*760);//产生随机距离  box.style.left = boxLeft + "px";  content.appendChild(box);  //box进入游戏界面，开始移动，并开始执行函数和pig比对是否撞击  var st = setInterval(function (){  if (b < 460){  box.style.top = b + 5 + "px";  b += 5;  if (b > 416) {  meet(box, content);  }  }  else {  content.removeChild(box);  clearInterval(st);  b = 30;  }  },5);  }  bar.life();  /*-- 开始执行循环添加box函数 --*/  var xt = setInterval(function(){  if (lifes == false) {  clearInterval(xt);  alert("时间到，您的得分是："+sco);  lifeWidth = 690;  lifes = true;  sco = 0;  $("startbox").style.display = "block";  $("start").value = "再玩一次";  content.removeChild(pig);  }else{  createbox();  createbadbox();  }  },500);  }  window.onload = function () {  $("start").onclick = function () {  $("startbox").style.display = "none";  new game();  }  }  </script>	</head>
+
+<body>
+	<div id="content">
+		<div id="startbox">
+			<p>游戏规则：</p>
+			<p>(1) 你只有30秒的时间，用鼠标控制小猪左右移动;</p>
+			<p>(2) 小猪接到<img src="38.gif" />女孩，加10分；</p>
+			<p>(3) 小猪接到<img src="48.gif" />女孩，减10分；</p> <input type="button" id="start" value="开始游戏" /> </div>
+		<div id="scbox">分数：<span id="sc">0</span></div>
+		<div id="life" style="width:690px;"></div>
+		<div id="bottom"></div>
+		<div id="jia" style="display:none;">+10</div>
+		<div id="jian" style="display:none;">-10</div>
+	</div>
+</body>
+
+</html>
