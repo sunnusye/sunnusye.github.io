@@ -7,8 +7,11 @@ var mapS = 500;
 var computerID;
 //记录电脑的ID
 
-var isPath = true;
+var judge = true;
 //这个方向是否可走
+
+var obstacle = 7;
+//障碍物个数（重叠时可小于7）
 
 var up = 0;
 
@@ -19,46 +22,27 @@ var right = 0;
 var down = 0;
 //记录四方位上距离电脑的距离
 
-var obstacle = 7;
-//障碍物个数（重叠时可小于）
-
-
 function createMap() {
 
-    var x = Math.round(Math.random() * (mapSize - 1));  //行
+    var x = Math.round(Math.random() * (mapSize - 3)) + 1;  //行
 
-    var y = Math.round(Math.random() * (mapSize - 1));  //列
+    var y = Math.round(Math.random() * (mapSize - 3)) + 1;  //列
+
     //创建地图的函数Math.random() 产生一个[0，1)之间的随机数
-
-    if (x == 0)
-
-        x = x + 1;
-
-    else if (x == (mapSize - 1))
-
-        x = x - 1;
-
-    if (y == 0)
-
-        y = y + 1;
-
-    else if (y == (mapSize - 1))
-
-        y = y - 1;
-    //避免直接输的情况
+    //同时避免直接输的情况，最多会跑到正数或者倒数第2行或者列
 
     computerID = x + "_" + y;
     //x,y定义在下方故把computerID写在下半部分
 
-    var tabobj = document.createElement("table");//创建表格，table为实际名词，以下定义长宽的也是实际意思
+    var Shower = document.createElement("table");//创建表格，table为实际名词，以下定义长宽的也是实际意思，设定你的长宽。
 
-    tabobj.style.width = mapS + "px";
+    Shower.style.width = mapS + "px";
 
-    tabobj.style.height = mapS + "px";
+    Shower.style.height = mapS + "px";
 
-    tabobj.border = "5";
+    Shower.border = "5";
 
-    var tbodyobj = document.createElement("tbody");//新建一个tbody类型的Element节,若删去，表格会变得很小。
+    var Lobj = document.createElement("tbody");//新建一个tbody类型的Element节,若删去，表格会变得很小。
     //tbody 元素会为全部表格自动定义，就算表格没有显式定义tbody元素。
 
     for (var i = 0; i < mapSize; i++) {
@@ -68,6 +52,7 @@ function createMap() {
         for (var j = 0; j < mapSize; j++) {
 
             var tdobj = document.createElement("td");
+            //设定行和列
 
             tdobj.id = i + "_" + j //给其id赋值
 
@@ -85,13 +70,15 @@ function createMap() {
             //appendChild() 方法在节点的子节点列表末添加新的子节点。insertBefore() 方法在节点的子节点列表任意位置插入新的节点。
         }
 
-        tbodyobj.appendChild(trobj);
+        Lobj.appendChild(trobj);
 
     }
 
-    tabobj.appendChild(tbodyobj);
+    Shower.appendChild(Lobj);
 
-    document.getElementById("map_div").appendChild(tabobj);
+    document.getElementById("map_div").appendChild(Shower);
+
+    //不过，因为如果您需要查找文档中的一个特定的元素或集合，最有效的方法是 getElementById()和jQueey。可以用该 ID 查找想要的元素。
     //定位到html的map_div上
 
     for (var i = 0; i < obstacle; i++) {
@@ -105,6 +92,7 @@ function createMap() {
     }
 
 }
+
 //此处为默认随机障碍物
 
 function tdClick() {
@@ -121,7 +109,7 @@ function tdClick() {
 
         down = 0;
 
-        computerXZ();//函式在下面
+        computerXZ();//这个函式在下面
 
     }
 
@@ -138,9 +126,9 @@ function computerXZ() {
 
     var mid = (mapSize - 1) / 2;
 
-    //中心位置
+    //获得中心位置
 
-    //左上角
+    //处于左上角，判断走路的方向。||是或的意思，有1为true，都为0为false。
 
     if (x <= mid && y <= mid) {
 
@@ -202,7 +190,7 @@ function computerXZ() {
 
     }
 
-    //右上角
+    //右上角(分析向右和向上的最快出口，电脑获得胜利。)
 
     else if (x <= mid && y >= mid) {
 
@@ -373,7 +361,7 @@ function direction(up, left, right, down, _x, _y) {
         alert("被抓住了呜呜呜呜！");
 
         window.location.href = window.location.href;
-
+        //四个方向都被限制住了，即取得胜利
     }
     else {
 
@@ -381,7 +369,7 @@ function direction(up, left, right, down, _x, _y) {
 
         arrayDirection.sort(function (x, y) { return y - x; })
 
-        //对方 往 离自己(对方)最远的那个障碍物走
+        //对方往离自己(对方)最远的那个障碍物走
 
         if (up == arrayDirection[0])
 
@@ -403,8 +391,7 @@ function direction(up, left, right, down, _x, _y) {
 
 }
 
-//判断是否输了
-
+//判断是否输了，底下就是判断是否电脑赢了
 function isDeath() {
 
     for (var i = 0; i < mapSize; i++) {
@@ -435,7 +422,7 @@ function computerUp(x, y, mode)//向上走
 
         if (document.getElementById(i + "_" + y).style.backgroundColor == "") {
 
-            isPath = true;
+            judge = true;
 
             up++;
 
@@ -443,7 +430,7 @@ function computerUp(x, y, mode)//向上走
 
         else {
 
-            isPath = false;
+            judge = false;
 
             break;
 
@@ -451,7 +438,7 @@ function computerUp(x, y, mode)//向上走
 
     }
 
-    if (isPath || mode) {
+    if (judge || mode) {
 
         document.getElementById(computerID).style.backgroundColor = "";
 
@@ -477,7 +464,7 @@ function computerLeft(x, y, mode)//向左走
 
         if (document.getElementById(x + "_" + i).style.backgroundColor == "") {
 
-            isPath = true;
+            judge = true;
 
             left++;
 
@@ -485,7 +472,7 @@ function computerLeft(x, y, mode)//向左走
 
         else {
 
-            isPath = false;
+            judge = false;
 
             break;
 
@@ -493,7 +480,7 @@ function computerLeft(x, y, mode)//向左走
 
     }
 
-    if (isPath || mode) {
+    if (judge || mode) {
 
         document.getElementById(computerID).style.backgroundColor = "";
 
@@ -519,7 +506,7 @@ function computerRight(x, y, mode)//向右走
 
         if (document.getElementById(x + "_" + i).style.backgroundColor == "") {
 
-            isPath = true;
+            judge = true;
 
             right++;
 
@@ -527,7 +514,7 @@ function computerRight(x, y, mode)//向右走
 
         else {
 
-            isPath = false;
+            judge = false;
 
             break;
 
@@ -535,7 +522,7 @@ function computerRight(x, y, mode)//向右走
 
     }
 
-    if (isPath || mode) {
+    if (judge || mode) {
 
         document.getElementById(computerID).style.backgroundColor = "";
 
@@ -561,7 +548,7 @@ function computerDown(x, y, mode)//向下走
 
         if (document.getElementById(i + "_" + y).style.backgroundColor == "") {
 
-            isPath = true;
+            judge = true;
 
             down++;
 
@@ -569,7 +556,7 @@ function computerDown(x, y, mode)//向下走
 
         else {
 
-            isPath = false;
+            judge = false;
 
             break;
 
@@ -577,7 +564,7 @@ function computerDown(x, y, mode)//向下走
 
     }
 
-    if (isPath || mode) {
+    if (judge || mode) {
 
         document.getElementById(computerID).style.backgroundColor = "";
 
