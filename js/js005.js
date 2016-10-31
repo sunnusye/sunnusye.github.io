@@ -5,7 +5,7 @@ function Run() {
     var $img = $('<img>');
 
     // 設定 src 屬性
-    $img.attr('src', './img/p02.jpg');
+    $img.attr('src', './img/P02.jpg');
     // 設定 class 樣式
     $img.attr('class', 'img-thumbnail');
 
