@@ -1,10 +1,10 @@
-var svg = d3.selectAll("svg");
-var c = svg.append('circle');
-var c1 = svg.append('circle');
-var c2 = svg.append('circle');
-var c3 = svg.append('circle');
-var c4 = svg.append('circle');
-var p = svg.append('polygon');
+var svgctrl = d3.selectAll("svg");
+var c = svgctrl.append('circle');
+var c1 = svgctrl.append('circle');
+var c2 = svgctrl.append('circle');
+var c3 = svgctrl.append('circle');
+var c4 = svgctrl.append('circle');
+var p = svgctrl.append('polygon');
 var cx = 200;
 var cy = 210;
 
