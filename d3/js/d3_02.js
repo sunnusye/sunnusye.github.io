@@ -37,3 +37,10 @@ function x1() {
     c3.attr('cy', cy - 136);
     c4.attr('cy', cy + 136);
 }
+
+function x2() {
+    var i = (Math.floor(Math.random() * 256)).toString(16);
+    var j = (Math.floor(Math.random() * 256)).toString(16);
+    var k = (Math.floor(Math.random() * 256)).toString(16);
+    $('polygon').attr('fill', '#' + i + j + k);
+}
