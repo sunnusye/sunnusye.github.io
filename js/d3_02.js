@@ -1,9 +1,3 @@
-//<circle cx="300" cy="300" r="120" stroke="black" stroke-width="3" fill="#ffffff" />
-//<line x1="300" y1="300" x2="300" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
-//<line x1="300" y1="300" x2="360" y2="300" style="stroke:rgb(255,0,0);stroke-width:2" />
-//<polygon points="300,180 320,140 280,140" style="fill:lime;stroke:purple;stroke-width:1" />
-//<ellipse cx="445" cy="300" rx="24" ry="35" style="fill:yellow;stroke:purple;stroke-width:2" />
-
 var svg = d3.selectAll("svg");
 var c = svg.append('circle');
 var c1 = svg.append('circle');
